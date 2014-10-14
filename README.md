@@ -58,6 +58,8 @@ Choose a feature you'd like to implement and go for it.
 * Users should be able to type the surgeon's first or last name or both in any order
 * The search should do fuzzy matching for surgeries because users are expected to misspell the medical terms
 * The search should have a selector for All, Hospitals, Doctors, Surgeries to limit the search
+* The search must include type-ahead
+* The search must have a drop-down with possible choices
 
 ## Map
 
