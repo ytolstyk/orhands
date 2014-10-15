@@ -43,6 +43,9 @@ Choose a feature you'd like to implement and go for it.
 * Everyone should be able to access the main site functionality without logging in or signing up
 * If a user wants to rate, comment, or send a message, the modal pop-up authentication should require them to sign in or sign up without leaving the page.
 * Use AJAX for authentication and signup
+* Sign-up should have password and password verification fields checked client-side
+* Password field should have a live strength meter
+* There should be a password recovery option that sends a link to the user to reset their password
 
 ## User Profiles
 
