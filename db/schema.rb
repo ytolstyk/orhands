@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015014825) do
+ActiveRecord::Schema.define(version: 20141016170915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20141015014825) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "hospitals", ["city"], name: "index_hospitals_on_city", using: :btree
+  add_index "hospitals", ["county"], name: "index_hospitals_on_county", using: :btree
+  add_index "hospitals", ["name"], name: "index_hospitals_on_name", using: :btree
+  add_index "hospitals", ["state"], name: "index_hospitals_on_state", using: :btree
+  add_index "hospitals", ["zip"], name: "index_hospitals_on_zip", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",                      null: false
