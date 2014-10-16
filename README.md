@@ -26,6 +26,18 @@ The project is broken up into the following categories:
 
 Choose a feature you'd like to implement and go for it.
 
+# MVP Feature Order
+
+1. Database search
+2. Search results display
+3. Hospital show page
+4. Procedure show page
+5. Surgeon show page
+6. Reviews
+7. Ratings
+8. Private messages
+9. Notifications
+
 ## Admin Access
 
 * Admin should be able to edit posts to moderate, but also to censor protected health information (PHI)
