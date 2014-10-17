@@ -20,4 +20,5 @@
 #
 
 class Hospital < ActiveRecord::Base
+  paginates_per 25
 end
