@@ -16,3 +16,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+div.form-group input.search-input {
+  width: 200px;
+  transition: all 0.2s ease-in-out;
+}

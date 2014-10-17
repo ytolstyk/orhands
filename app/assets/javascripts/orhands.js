@@ -9,5 +9,11 @@ window.Orhands = {
 };
 
 $(document).ready(function(){
-  // Orhands.initialize();
+  $(".search-input").on("focus", function() {
+    $(this).css("width", "400px");
+  });
+
+  $(".search-input").on("focusout", function() {
+    $(this).css("width", "200px");
+  });
 });
