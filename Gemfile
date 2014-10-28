@@ -6,6 +6,7 @@ group :development do
   gem "annotate"
 end
 
+gem "twitter-typeahead-rails"
 gem "lol_dba"
 gem "thin"
 gem "jquery-ui-sass-rails"
