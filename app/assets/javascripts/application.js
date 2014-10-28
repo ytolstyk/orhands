@@ -18,6 +18,7 @@
 //= require backbone
 //= require orhands
 //= require orhands_typeahead
+//= require selectize
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

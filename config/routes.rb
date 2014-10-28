@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resource :session, only: [:new, :create, :destroy], defaults: { format: :json }
 
     get "hospital_names", to: "hospitals#names"
+    get "hospital_views", to: "hospitals#views"
   end
 end

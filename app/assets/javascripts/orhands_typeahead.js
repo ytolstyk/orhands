@@ -1,13 +1,13 @@
 $(document).ready(function() {
   var hospitals = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace("num"),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    remote: "http://localhost:3000/api/hospital_names"
+    remote: "api/hospital_names"
   });
 
   hospitals.initialize();
 
-  $(".div-search .search-input").typeahead({
+  $(".search-input").typeahead({
     hint: true,
     highlight: true
   }, {
