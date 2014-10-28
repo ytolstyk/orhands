@@ -1,26 +1,18 @@
 $(document).ready(function() {
-  var numbers = new Bloodhound({
+  var hospitals = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace("num"),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: [
-      { num: "one" },
-      { num: "two" },
-      { num: "three" },
-      { num: "four" },
-      { num: "five" },
-      { num: "six" },
-      { num: "seven" }
-    ]
+    remote: "http://localhost:3000/api/hospital_names"
   });
 
-  numbers.initialize();
+  hospitals.initialize();
 
   $(".div-search .search-input").typeahead({
     hint: true,
     highlight: true
   }, {
-    name: "numbers",
-    displayKey: "num",
-    source: numbers.ttAdapter()
+    name: "hospitals",
+    displayKey: "name",
+    source: hospitals.ttAdapter()
   });
 });
