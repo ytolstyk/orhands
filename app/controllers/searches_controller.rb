@@ -1,14 +1,6 @@
 module Api
-  class HospitalsController < ApiController
+  class SearchesController < ApiController
     def index
-      @hospitals = Hospital.all.page params[:page]
-    end
-
-    def show
-      @hospital = Hospital.find(params[:id])
-    end
-
-    def search
       @hospitals = Hospital.none
 
       query = params[:query] || ""
@@ -26,14 +18,6 @@ module Api
                         zip: el.zip,
                         id: el.id } }
       end
-    end
-
-    def views
-      @hospitals = Hospital.order(views: :desc).limit(100).pluck(:name)
-    end
-
-    def names
-      @hospitals = Hospital.order(:name).pluck(:name)
     end
   end
 end

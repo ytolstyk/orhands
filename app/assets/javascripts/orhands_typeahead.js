@@ -1,6 +1,7 @@
 $.Searchable = function(selector, options) {
   this.$el = $(selector);
   this.$results = $(options.results);
+  this.$input = this.$el.find("input");
 
   this.clearResults();
   this.bindEvents();
@@ -9,11 +10,14 @@ $.Searchable = function(selector, options) {
 $.Searchable.prototype.bindEvents = function() {
   this.$el.on("submit", this.onSubmit.bind(this));
   this.$el.on("input", this.onInput.bind(this));
-  this.$el.on("focus", this.onFocus.bind(this));
+  this.$input.on("focus", this.onFocus.bind(this));
 };
 
 $.Searchable.prototype.onFocus = function(event) {
   var query = event.target.value;
+  if (query.length < 1) {
+    this.clearResults();
+  };
 };
 
 $.Searchable.prototype.onSubmit = function(event) {
@@ -30,7 +34,7 @@ $.Searchable.prototype.onInput = function(event) {
   }
 
   $.ajax({
-    url: "/api/hospital_search",
+    url: "/api/searches",
     method: "GET",
     dataType: "json",
     data: { query: query },
@@ -67,7 +71,6 @@ $.Searchable.prototype.clearSearch = function() {
 
 $.Searchable.prototype.clearResults = function() {
   this.results = [];
-  this.selectedIndex = 0;
   this.$results.empty();
 };
 

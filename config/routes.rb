@@ -5,9 +5,10 @@ Rails.application.routes.draw do
     resources :users
     resources :hospitals
     resource :session, only: [:new, :create, :destroy], defaults: { format: :json }
+    resources :searches, only: [:index]
 
     get "hospital_search", to: "hospitals#search"
-    get "names", to: "hospitals#names"
-    get "views", to: "hospitals#views"
+    get "hospital_names", to: "hospitals#names"
+    get "hospital_views", to: "hospitals#views"
   end
 end
