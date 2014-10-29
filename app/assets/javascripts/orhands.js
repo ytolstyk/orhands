@@ -18,4 +18,8 @@ $(document).ready(function(){
   $searchBox.on("focusout", function() {
     $(this).css("width", "200px");
   });
+
+  $searchBox.searchable({
+    results: "#search-results"
+  });
 });

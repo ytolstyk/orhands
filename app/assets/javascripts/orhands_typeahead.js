@@ -9,7 +9,7 @@ $.Searchable = function(selector, options) {
 $.Searchable.prototype.bindEvents = function() {
   this.$el.on("submit", this.onSubmit.bind(this));
   this.$el.on("input", this.onInput.bind(this));
-  this.%el.on("focusout", this.onFocusOut.bind(this));
+  this.$el.on("focusout", this.onFocusOut.bind(this));
   this.$el.on("focus", this.onFocus.bind(this));
 };
 
@@ -21,6 +21,10 @@ $.Searchable.prototype.onFocusOut = function(event) {
   this.clearSearch();
 };
 
+$.Searchable.prototype.onFocus = function(event) {
+
+};
+
 $.Searchable.prototype.onInput = function(event) {
   var query = event.target.value;
 
@@ -30,7 +34,7 @@ $.Searchable.prototype.onInput = function(event) {
   }
 
   $.ajax({
-    url: "/api/hospitals/search",
+    url: "/api/hospital_search",
     method: "GET",
     dataType: "json",
     data: { query: query },
@@ -40,12 +44,15 @@ $.Searchable.prototype.onInput = function(event) {
 
 $.Searchable.prototype.handleResponse = function(data) {
   this.clearResults();
-  data.results.forEach(function (result, index) {
+  data.forEach(function (result, index) {
     this.results.push(result);
     this.$results.append(this.liFromResult(result));
   }.bind(this));
+};
 
-  this.selectIndex(this.selectedIndex);
+$.Searchable.prototype.liFromResult = function(result) {
+  var $li = $("<li>");
+  return $li.text(result.name);
 };
 
 $.Searchable.prototype.clearSearch = function() {
