@@ -15,7 +15,15 @@ module Api
       query.downcase!
 
       if query && query.length > 0
-        @hospitals = Hospital.where("LOWER(name) ~ ?", query).order(views: :desc).limit(10).pluck(:name)
+        @hospitals = Hospital.where("LOWER(name) ~ ?", query)
+          .order(views: :desc)
+          .limit(10)
+          .select([:name, :address, :city, :state, :zip])
+          .map { |el| { name: el.name.titlecase,
+                        address: el.address.titlecase,
+                        city: el.city.titlecase,
+                        state: el.state,
+                        zip: el.zip} }
       end
     end
 

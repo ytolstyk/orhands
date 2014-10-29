@@ -9,16 +9,11 @@ $.Searchable = function(selector, options) {
 $.Searchable.prototype.bindEvents = function() {
   this.$el.on("submit", this.onSubmit.bind(this));
   this.$el.on("input", this.onInput.bind(this));
-  this.$el.on("focusout", this.onFocusOut.bind(this));
   this.$el.on("focus", this.onFocus.bind(this));
 };
 
 $.Searchable.prototype.onSubmit = function(event) {
   event.preventDefault();
-};
-
-$.Searchable.prototype.onFocusOut = function(event) {
-  this.clearSearch();
 };
 
 $.Searchable.prototype.onFocus = function(event) {
@@ -27,6 +22,7 @@ $.Searchable.prototype.onFocus = function(event) {
 
 $.Searchable.prototype.onInput = function(event) {
   var query = event.target.value;
+  query = query.replace(/"/g, "").replace(/'/g, "").replace(/\(|\)/g, "");
 
   if (query.length === 0) {
     this.clearResults();
@@ -51,8 +47,12 @@ $.Searchable.prototype.handleResponse = function(data) {
 };
 
 $.Searchable.prototype.liFromResult = function(result) {
-  var $li = $("<li>");
-  return $li.text(result.name);
+  var $li = $("<li class='li-search-result'>");
+  var $div = $("<div class='div-search-result'>");
+  $div.text(result.address + " " + result.city + ", " + result.state);
+  $li.text(result.name);
+  $li.append($div);
+  return $li;
 };
 
 $.Searchable.prototype.clearSearch = function() {
