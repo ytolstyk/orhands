@@ -10,6 +10,7 @@ window.Orhands = {
 
 $(document).ready(function(){
   var $searchBox = $(".search-input");
+  var $formSearch = $(".form-search");
 
   $searchBox.on("focus", function() {
     $(this).css("width", "300px");
@@ -19,7 +20,7 @@ $(document).ready(function(){
     $(this).css("width", "200px");
   });
 
-  $searchBox.searchable({
+  $formSearch.searchable({
     results: "#search-results"
   });
 });

@@ -12,12 +12,12 @@ $.Searchable.prototype.bindEvents = function() {
   this.$el.on("focus", this.onFocus.bind(this));
 };
 
-$.Searchable.prototype.onSubmit = function(event) {
-  event.preventDefault();
+$.Searchable.prototype.onFocus = function(event) {
+  var query = event.target.value;
 };
 
-$.Searchable.prototype.onFocus = function(event) {
-
+$.Searchable.prototype.onSubmit = function(event) {
+  event.preventDefault();
 };
 
 $.Searchable.prototype.onInput = function(event) {
@@ -44,13 +44,18 @@ $.Searchable.prototype.handleResponse = function(data) {
     this.results.push(result);
     this.$results.append(this.liFromResult(result));
   }.bind(this));
+
+  if (data.length < 1) {
+    this.$results.append($("<li class='li-search-result'>").text("no results found"));
+  }
 };
 
 $.Searchable.prototype.liFromResult = function(result) {
+  var $a = $("<a href='hospital/" + result.id + "'>");
   var $li = $("<li class='li-search-result'>");
   var $div = $("<div class='div-search-result'>");
   $div.text(result.address + " " + result.city + ", " + result.state);
-  $li.text(result.name);
+  $li.append($a.text(result.name));
   $li.append($div);
   return $li;
 };
