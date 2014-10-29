@@ -9,11 +9,13 @@ window.Orhands = {
 };
 
 $(document).ready(function(){
-  $(".search-input").on("focus", function() {
-    $(this).css("width", "400px");
+  var $searchBox = $(".search-input");
+
+  $searchBox.on("focus", function() {
+    $(this).css("width", "300px");
   });
 
-  $(".search-input").on("focusout", function() {
+  $searchBox.on("focusout", function() {
     $(this).css("width", "200px");
   });
 });

@@ -12,8 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require selectize
- *= require selectize.default
  */
 
 @import "bootstrap-sprockets";
@@ -22,14 +20,4 @@
 div.form-group input.search-input {
   width: 200px;
   transition: all 0.2s ease-in-out;
-}
-
-.tt-dropdown-menu {
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 12px;
-    padding: 5px;
-    width: 400px;
 }

@@ -3,10 +3,13 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users
-    resources :hospitals
+    resources :hospitals do 
+      get "search", to: "hospitals#search"
+      get "names", to: "hospitals#names"
+      get "views", to: "hospitals#views"
+    end
     resource :session, only: [:new, :create, :destroy], defaults: { format: :json }
 
-    get "hospital_names", to: "hospitals#names"
-    get "hospital_views", to: "hospitals#views"
+    get "hospital_search", to: "hospitals#search"
   end
 end

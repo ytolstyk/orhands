@@ -5,7 +5,18 @@ module Api
     end
 
     def show
-      
+
+    end
+
+    def search
+      @hospitals = Hospital.none
+
+      query = params[:query] || ""
+      query.downcase!
+
+      if query && query.length > 0
+        @hospitals = Hospital.where("LOWER(name) ~ ?", query).order(views: :desc).limit(10).pluck(:name)
+      end
     end
 
     def views

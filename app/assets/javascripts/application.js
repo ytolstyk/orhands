@@ -13,12 +13,10 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
-//= require twitter/typeahead
 //= require underscore
 //= require backbone
 //= require orhands
 //= require orhands_typeahead
-//= require selectize
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
