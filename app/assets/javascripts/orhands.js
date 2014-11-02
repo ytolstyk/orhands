@@ -25,6 +25,7 @@ $(document).ready(function(){
   });
 
   $formSearch.searchable({
-    results: "#search-results"
+    results: "#search-results",
+    url: "/api/searches"
   });
 });

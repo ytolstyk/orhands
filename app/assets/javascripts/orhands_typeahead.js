@@ -2,6 +2,7 @@ $.Searchable = function(selector, options) {
   this.$el = $(selector);
   this.$results = $(options.results);
   this.$input = this.$el.find("input");
+  this.ajaxUrl = options.url;
 
   this.clearResults();
   this.bindEvents();
@@ -34,7 +35,7 @@ $.Searchable.prototype.onInput = function(event) {
   }
 
   $.ajax({
-    url: "/api/searches",
+    url: this.ajaxUrl,
     method: "GET",
     dataType: "json",
     data: { query: query },
