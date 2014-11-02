@@ -6,7 +6,7 @@ module Api
       query = (params[:query] || "").downcase.strip.split(" ")
 
       query.each do |name|
-        @hospitals = @hospitals.where("LOWER(name) ~ ?", name)
+        @hospitals = @hospitals.where("LOWER(name) LIKE ?", "%#{name}%")
       end
 
       @hospitals = @hospitals.order(views: :desc)
