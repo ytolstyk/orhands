@@ -4,7 +4,11 @@ window.Orhands = {
   Views: {},
   Routers: {},
   initialize: function() {
-    
+    new Orhands.Routers.Orhands({
+      $main: $("#main")
+    });
+
+    Backbone.history.start();
   }
 };
 

@@ -9,7 +9,7 @@ $.Searchable = function(selector, options) {
 
 $.Searchable.prototype.bindEvents = function() {
   this.$el.on("submit", this.onSubmit.bind(this));
-  this.$el.on("input", this.onInput.bind(this));
+  this.$el.on("keyup", this.onInput.bind(this));
   this.$input.on("focus", this.onFocus.bind(this));
 };
 
@@ -44,6 +44,7 @@ $.Searchable.prototype.onInput = function(event) {
 
 $.Searchable.prototype.handleResponse = function(data) {
   this.clearResults();
+  this.$results.append(this.liTitle(data));
   data.forEach(function (result, index) {
     this.results.push(result);
     this.$results.append(this.liFromResult(result));
@@ -52,6 +53,12 @@ $.Searchable.prototype.handleResponse = function(data) {
   if (data.length < 1) {
     this.$results.append($("<li class='li-search-result'>").text("no results found"));
   }
+};
+
+$.Searchable.prototype.liTitle = function(data) {
+  var $li = $("<li class='li-search-title'>");
+  $li.text("Hospitals");
+  return $li;
 };
 
 $.Searchable.prototype.liFromResult = function(result) {
