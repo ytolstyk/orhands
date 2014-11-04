@@ -7,20 +7,22 @@ module Api
 
     def create
       user = User.find_by_credentials(
-          params[:username], params[:password]
+          params[:user][:username],
+          params[:user][:password]
         )
 
       if user
         login_user!(user)
-        redirect_to root_url
+        render json: { username: user.username }
       else
         flash.now[:errors] = ["Username/password doesn't exist"]
-        render :new
+        render json: { errors: ["Username/password doesn't exist"] }
       end
     end
 
     def destroy
       logout_user!(current_user)
+      render json: { username: current_user.username }
     end
   end
 end

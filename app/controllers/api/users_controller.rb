@@ -15,10 +15,10 @@ module Api
 
       if @user.save
         login_user!(@user)
-        redirect_to root_url
+        render json: { username: @user.username }
       else
-        flash.now[:errors] = @user.errors.full_messages
-        render :new
+        # flash.now[:errors] = @user.errors.full_messages
+        render json: { errors: @user.errors.full_messages }
       end
     end
 

@@ -9,9 +9,9 @@ Orhands.Routers.Orhands = Backbone.Router.extend({
   },
 
   root: function() {
-    var root = new Orhands.Views.Root({});
+    //var root = new Orhands.Views.Root({});
 
-    this._swapView(root);
+    //this._swapView(root);
   },
 
   _swapView: function(view) {
