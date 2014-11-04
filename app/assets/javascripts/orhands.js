@@ -28,9 +28,9 @@ $(document).ready(function(){
   var $closeModal = $(".close");
 
   $userNavbar.on("click", "#sign-out", signOut);
+  $userNavbar.on("click", "#sign-up-link", signUpForm);
+  $userNavbar.on("click", "#sign-in-link", signInForm);
   $signInBtn.on("click", signIn);
-  $signInLink.on("click", signInForm);
-  $signUpLink.on("click", signUpForm);
 
   $confirmPasswordInput.on("keyup", passwordMatch);
   $username.on("keyup", passwordMatch);
@@ -117,8 +117,11 @@ $(document).ready(function(){
   function handleSignIn(data) {
     if (typeof data.errors === "undefined") {
       $userNavbar.empty();
-      var $userLink = $("<li>").append($("<a>").text(data.username));
-      var $signOutLink = $("<li id='sign-out'>").append($("<a>").text("Sign out"));
+      var $userLink = $("<li>")
+        .append($("<a href='#'>").text(data.username));
+      var $signOutLink = $("<li id='sign-out'>")
+        .append($("<a href='#'>").text("Sign out"));
+      
       $userNavbar.append($userLink).append($signOutLink);
       $closeModal.trigger("click");
     } else {
@@ -157,8 +160,10 @@ $(document).ready(function(){
 
   function handleSignOut(data) {
     $userNavbar.empty();
-    var $signInLink = $("<li id='sign-in-link'>").append($("<a>").text("Sign in"));
-    var $signUpLink = $("<li id='sign-up-link'>").append($("<a>").text("Sign up"));
+    var $signInLink = $("<li id='sign-in-link'>")
+      .append($("<a href='#' data-toggle='modal' data-target='#signInModal' id='sign-in-link'>").text("Sign in"));
+    var $signUpLink = $("<li id='sign-up-link'>")
+      .append($("<a href='#' data-toggle='modal' data-target='#signInModal' id='sign-up-link'>").text("Sign up"));
     $userNavbar.append($signInLink).append($signUpLink);
   };
 
