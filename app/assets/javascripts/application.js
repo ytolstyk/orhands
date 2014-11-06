@@ -17,6 +17,7 @@
 //= require backbone
 //= require orhands
 //= require orhands_typeahead
+//= require orhands_signin
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

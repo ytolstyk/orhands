@@ -12,12 +12,12 @@ keys = []
 File.readlines('hospital_data.tsv').each do |line|
   split = line.split("\t")
 
-  if (keys.empty?)
+  if keys.empty?
     keys = split.map { |k| k.downcase.gsub(' ', '_').gsub("\n", '') }
     next
   end
 
-  entry = {};
+  entry = {}
 
   split.each_with_index do |el, i|
     if (keys[i] == 'location')
